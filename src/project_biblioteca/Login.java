@@ -3,6 +3,8 @@ package project_biblioteca;
 
 import java.awt.Color;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -114,28 +116,45 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        String AdminUser = "admin";
-        String AdminPassword = "admin";
-        String ActiveUser = null; //User actually logged in the system
+        try {
+            
+            try {
+                connect();
+                } catch (ClassNotFoundException ex) {
+                } catch (SQLException ex) {            
+            }
+            
+            PreparedStatement smt = null;
+            ResultSet res = null;            
+            smt = conn.prepareStatement("SELECT usuario FROM users");            
+            res = smt.executeQuery();
+            res.getString(AdminUser) = AdminUser;
+            
+            String AdminUser = "admin";
+            String AdminPassword = "admin";
+            String ActiveUser = null; //User actually logged in the system
+            
+            if (jTextField1.getText().equals(AdminUser)  &&  jTextField2.getText().equals(AdminPassword)) {
                 
-        if (jTextField1.getText().equals(AdminUser)  &&  jTextField2.getText().equals(AdminPassword)) {            
-            
-            //Sets logged user as Active User
-            ActiveUser = jTextField1.getText();
-            jButton1.setBackground(Color.green);
-            /*LOG*/System.out.println("User "+ActiveUser+" logged in");            
-            
-            //Make the login window disappear
-            setVisible(false);
-            /*LOG*/System.out.println("Closing LOGIN window");
-            
-            //Calls the Main menu window
-            new Menu().setVisible(true);
-            /*LOG*/System.out.println("Opening MENU window");
-            
-        } else {
-            jButton1.setBackground(Color.red);
-            /*LOG*/System.out.println("Incorrect login");
+                //Sets logged user as Active User
+                ActiveUser = jTextField1.getText();
+                jButton1.setBackground(Color.green);
+                /*LOG*/System.out.println("User "+ActiveUser+" logged in");
+                
+                //Make the login window disappear
+                setVisible(false);
+                /*LOG*/System.out.println("Closing LOGIN window");
+                
+                //Calls the Main menu window
+                new Menu().setVisible(true);
+                /*LOG*/System.out.println("Opening MENU window");
+                
+            } else {
+                jButton1.setBackground(Color.red);
+                /*LOG*/System.out.println("Incorrect login");
+            }
+        } catch (SQLException ex) {            
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
