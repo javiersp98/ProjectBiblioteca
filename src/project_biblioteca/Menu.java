@@ -11,11 +11,18 @@ import static project_biblioteca.NewVinyl.conn;
 public class Menu extends javax.swing.JFrame {
 
     public Menu() {
+        
         initComponents();
-        jTable1 = meterDatos(); 
-        //JPanel panel = new JPanel();
-        //this.add(panel);
-        //panel.add(miTabla);
+        String [][] datos = new String[3][2];
+        datos[0][0]="Columna1";
+        datos[0][1]="Columna2";
+        datos[1][0]="10";
+        datos[1][1]="11";
+        
+        String [] columnNames = {"Columna1", "Columna2"};
+        
+        JTable jTable1 = new JTable(datos, columnNames);
+        new JTable();
     
     }
 
@@ -52,35 +59,11 @@ public class Menu extends javax.swing.JFrame {
 
     public static void main(String args[]) {        
         
-        JTable tabla;
-        String[] columnNames = {"First Name",
-            "Last Name",
-            "Sport",
-            "# of Years",
-            "Vegetarian"};
-
-        Object[][] data = {
-            {"Kathy", "Smith",
-                "Snowboarding", new Integer(5), new Boolean(false)},
-            {"John", "Doe",
-                "Rowing", new Integer(3), new Boolean(true)},
-            {"Sue", "Black",
-                "Knitting", new Integer(2), new Boolean(false)},
-            {"Jane", "White",
-                "Speed reading", new Integer(20), new Boolean(true)},
-            {"Joe", "Brown",
-                "Pool", new Integer(10), new Boolean(false)}
-        };
-
-        tabla = new JTable(data, columnNames);
-        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+                    break;}}
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -92,9 +75,9 @@ public class Menu extends javax.swing.JFrame {
         }      
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
-            }
-        });         
+                new Menu().setVisible(true);}
+        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -104,8 +87,10 @@ public class Menu extends javax.swing.JFrame {
 
     
     
+    /*-------------- FUNCIONES --------------------------------------------------------------------------------------------------------------------*/
+    
     public static void read() throws ClassNotFoundException, SQLException {
-
+    // Cuando esté listo, leerá los datos de la bd y los guardará en un vector    
         PreparedStatement smt = null;
         ResultSet res = null;
 
@@ -118,32 +103,6 @@ public class Menu extends javax.swing.JFrame {
             System.out.println("Name " + res.getString("name") + ", description: " + res.getString("description"));
             i++;
         }
-
     }
-
-    public static JTable meterDatos() {
-        JTable tabla;
-        String[] columnNames = {"First Name",
-            "Last Name",
-            "Sport",
-            "# of Years",
-            "Vegetarian"};
-
-        Object[][] data = {
-            {"Kathy", "Smith",
-                "Snowboarding", new Integer(5), new Boolean(false)},
-            {"John", "Doe",
-                "Rowing", new Integer(3), new Boolean(true)},
-            {"Sue", "Black",
-                "Knitting", new Integer(2), new Boolean(false)},
-            {"Jane", "White",
-                "Speed reading", new Integer(20), new Boolean(true)},
-            {"Joe", "Brown",
-                "Pool", new Integer(10), new Boolean(false)}
-        };
-
-        tabla = new JTable(data, columnNames);
-        return tabla;
-    }
-
+    
 }
