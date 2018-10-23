@@ -118,23 +118,23 @@ public class Login extends javax.swing.JFrame {
         
         try {
             
+            String DbUser = "admin";
+            String DbPassword = "admin";
+            String ActiveUser = null; //User actually logged in the system
+            
             try {
                 connect();
                 } catch (ClassNotFoundException ex) {
-                } catch (SQLException ex) {            
+                } catch (SQLException ex) {
             }
             
             PreparedStatement smt = null;
-            ResultSet res = null;            
-            smt = conn.prepareStatement("SELECT usuario FROM users");            
+            ResultSet res = null;
+            smt = conn.prepareStatement("SELECT usuario FROM users");
             res = smt.executeQuery();
-            res.getString(AdminUser) = AdminUser;
+            res.getString(jTextField1) = DbUser;
             
-            String AdminUser = "admin";
-            String AdminPassword = "admin";
-            String ActiveUser = null; //User actually logged in the system
-            
-            if (jTextField1.getText().equals(AdminUser)  &&  jTextField2.getText().equals(AdminPassword)) {
+            if (jTextField1.getText().equals(DbUser)  &&  jTextField2.getText().equals(DbPassword)) {
                 
                 //Sets logged user as Active User
                 ActiveUser = jTextField1.getText();

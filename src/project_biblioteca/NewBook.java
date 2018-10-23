@@ -11,6 +11,8 @@ public class NewBook extends javax.swing.JFrame {
 
     public NewBook() {
         initComponents();
+        // Impide que se cierre el programa, pero deja cerrarse la ventana
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE );
     }
 
     @SuppressWarnings("unchecked")
