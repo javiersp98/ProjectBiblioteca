@@ -1,10 +1,12 @@
 
 package project_biblioteca;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import static project_biblioteca.NewVinyl.conn;
 
@@ -12,17 +14,29 @@ public class Menu extends javax.swing.JFrame {
 
     public Menu() {
         
-        initComponents();
-        String [][] datos = new String[3][2];
-        datos[0][0]="Columna1";
-        datos[0][1]="Columna2";
-        datos[1][0]="10";
-        datos[1][1]="11";
-        
-        String [] columnNames = {"Columna1", "Columna2"};
-        
-        JTable jTable1 = new JTable(datos, columnNames);
-        new JTable();
+        //Array bidimensional de objetos con los datos de la tabla
+        Object[][] data = {
+        {"Mary", "Campione", "Esquiar", new Integer(5), new Boolean(false)},
+        {"Lhucas", "Huml", "Patinar", new Integer(3), new Boolean(true)},
+        {"Kathya", "Walrath", "Escalar", new Integer(2), new Boolean(false)},
+        {"Marcus", "Andrews", "Correr", new Integer(7), new Boolean(true)},
+        {"Angela", "Lalth", "Nadar", new Integer(4), new Boolean(false)}
+        };
+
+        //Array de ‘String’ con los titulos de las columnas
+        String[] columnNames = {"Nombre", "Apellido", "Pasatiempo", "Años de Practica", "Soltero(a)"};
+
+        //Creacion de la tabla
+        final JTable table = new JTable(data, columnNames);
+        table.setPreferredScrollableViewportSize(new Dimension(500, 80));
+
+        //Creamos un scrollpanel y se lo agregamos a la tabla
+        JScrollPane scrollpane = new JScrollPane(table);
+
+        //Agregamos el scrollpanel al contenedor
+        getContentPane().add(scrollpane, BorderLayout.CENTER);
+
+        //manejamos la salida
     
     }
 
@@ -96,6 +110,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {        
+        
+        Menu frame = new Menu();
+        frame.pack();
+        frame.setVisible(true);
         
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
