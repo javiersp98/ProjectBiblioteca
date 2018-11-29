@@ -1,0 +1,10 @@
+.texto {
+  /*Margen por arriba (para esquivar la barra superior)*/
+  margin-top: 120px;
+  /*Margen por la izq*/
+  margin-left: 70px;
+  /*Margen por la der*/
+  margin-right: 70px;
+  /*Ancho máximo del texto*/
+  width: 85%;
+}

@@ -1,0 +1,12 @@
+/*Usado en el modal de Crear*/
+.separar {
+    /*Márgenes en el modal*/
+    margin-top: 61px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+/*Márgenes para separar entre un input y otro*/
+.form-space {
+    margin-bottom: 7px;
+}

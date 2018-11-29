@@ -1,0 +1,20 @@
+body {
+  /*Imagen de fondo*/
+  background-image: url("../img/background.jpg");
+  /*Color de fondo blanco*/
+  background-color: #cccccc;
+  /*Posición de la imagen*/
+  background-position: 50% 20%;
+}
+
+.tiempo {
+  /*Solo si lo queremos colocar arriba*/
+  /*margin-top: 61px;*/
+  /*Margen por la izq*/
+  margin-left: 10px;
+  /*Margen por abajo (para esquivar la barra inferior)*/
+  margin-bottom: 61px;
+  /*Lo coloca en la parte inferior*/
+  position: fixed;
+  bottom: 0;
+}

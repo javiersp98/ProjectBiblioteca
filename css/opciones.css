@@ -1,0 +1,12 @@
+body {
+  /*Imagen de fondo*/
+  background-image: url("../img/work-in-progress.png");
+  /*No repetir la imagen*/
+  background-repeat: no-repeat;
+  /*Color de fondo blanco*/
+  background-color: #cccccc;
+  /*Posición de la imagen*/
+  background-position: 50% -40%;
+  /*Tamaño de la imagen*/
+  background-size: 30%;
+}
